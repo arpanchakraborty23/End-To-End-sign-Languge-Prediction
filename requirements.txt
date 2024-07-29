@@ -1,0 +1,19 @@
+pandas
+numpy
+torch
+tensorflow
+pyyaml
+python-dotenv
+matplotlib
+scikit-learn
+scipy
+opencv-python
+flask
+hop
+torchvision
+tqdm
+ultralytics
+seaborn
+ipykernel
+
+-e .
