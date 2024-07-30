@@ -1,0 +1,5 @@
+train: \anotated_data\train
+test : \anotated_data\test
+
+nc: 29
+names: ['A', 'B', 'C', 'CH', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'LL', 'N', 'O', 'P', 'Q', 'R', 'RR', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'manos']

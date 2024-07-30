@@ -15,5 +15,7 @@ tqdm
 ultralytics
 seaborn
 ipykernel
+gdown
+Ipython
 
 -e .
