@@ -6,7 +6,7 @@ import uuid
 from signLanguage.logger.logger import logging
 from signLanguage.exception.exception import CustomException
 
-IMAGE_PATH = "customdata"
+IMAGE_PATH = "custom_data"
 
 labels = ['Hello', 'Yes', 'No', 'Thanks', 'IloveYou', 'Please']
 

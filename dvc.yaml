@@ -1,0 +1,9 @@
+stages:
+  Data_Ingestion:
+    cmd: python signLanguage\pipeline\training_pipeline.py
+    deps:
+      - signLanguage\pipeline\training_pipeline.py
+      - config/config.yaml
+
+    outs: 
+      - data_ingestion/data

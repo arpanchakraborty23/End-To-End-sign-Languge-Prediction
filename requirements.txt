@@ -17,5 +17,6 @@ seaborn
 ipykernel
 gdown
 Ipython
+dvc
 
 -e .

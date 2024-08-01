@@ -1,5 +1,13 @@
-train: \anotated_data\train
-test : \anotated_data\test
+train: anotated_data\test\images
+val: anotated_data\train\images
+test: anotated_data\valid\images
 
 nc: 29
 names: ['A', 'B', 'C', 'CH', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'LL', 'N', 'O', 'P', 'Q', 'R', 'RR', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'manos']
+
+roboflow:
+  workspace: innovacin
+  project: manos-3qrvv
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/innovacin/manos-3qrvv/dataset/1
