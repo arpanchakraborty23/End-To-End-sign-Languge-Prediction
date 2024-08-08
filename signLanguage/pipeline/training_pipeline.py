@@ -13,7 +13,19 @@ class TrainPipeline:
     def Pipline(self):
         try:
             data_ingestion=DataIngestion()
-            data_ingestion.initate_data_ingestion()
+            data_ingestion.download_file()
+            data_ingestion.extract_data()
+           
         except Exception as e:
             logging.info('error occured ',str(e))
             raise CustomException(sys,e)
+    
+if __name__=='__main__':
+    try:
+        obj=TrainPipeline()
+        obj.Pipline()
+
+    except Exception as e:
+        logging.info('error in  train pipline',str(e))
+        raise CustomException(sys,e)
+

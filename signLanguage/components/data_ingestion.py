@@ -1,44 +1,68 @@
 import os,sys
-import gdown
 import zipfile
+import requests
 
+import gdown
 from signLanguage.logger.logger import logging
 from signLanguage.exception.exception import CustomException
 from signLanguage.configuration.config_manager import ConfigManager
-
+from signLanguage.entity.config_entity import DataIngestionConfig
 
 class DataIngestion:
     def __init__(self) -> None:
         config=ConfigManager()
         self.config=config.data_ingestion_config()
 
-        logging.info('---------------------------- Data Ingestion Has Started --------------------------')
 
-    def initate_data_ingestion(self):
+
+    def download_file(self):
         try:
-            # download data
+            logging.info('<---------------- Data Ingestion ---------------->')
 
-            # folder url
-            data_url=self.config.url
-            # local download folder
-            local_folder=self.config.local_floder
+            # geting data url
+            dataset_url=self.config.url
+
+            # create a local data folder
             os.makedirs(self.config.dir,exist_ok=True)
 
-            prefix='https://drive.google.com/uc?/export=download&id='
-            id=data_url.split('/')[5]
-            print(id)
 
-            # download data
-            gdown.download(prefix+id,local_folder)
+            # download data in local folder
+            local_floder=self.config.local_floder
 
-            # extract zip file
+            # unzip data
+            unzip_data=self.config.unzip_floder
+           
+            zip_data=requests.get(dataset_url)
 
-            unzip_folder=self.config.unzip_floder
-            with zipfile.ZipFile(local_folder,'r') as z:
-                z.extractall(unzip_folder)
+            # save to local folder
+            with open(local_floder,'wb') as l:
+                l.write(zip_data.content)
 
-            logging.info('---------------------------- Data Ingestion Completed--------------------------')
+
+            print(f"File downloaded successfully and saved to {local_floder}")
+            logging.info('Zip data download completed')
+
+      
+        except Exception as e:
+            logging.info(f' Error occured {str(e)}')
+            raise CustomException(sys,e)
+        
+    def extract_data(self):
+        try:
+            unzip_dir=self.config.unzip_floder
+            local_floder=self.config.local_floder
+
+            # extract zip folder
+            with zipfile.ZipFile(local_floder,'r') as zip:
+                zip.extractall(unzip_dir)
+
+            logging.info('data extracted')
+
+            logging.info('<---------------- Data Ingestion Completed ---------------->')
 
         except Exception as e:
-            logging.info('error occured ',str(e))
+            logging.info(f'error extract file {e}')
             raise CustomException(sys,e)
+        
+
+    

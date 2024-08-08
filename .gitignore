@@ -163,3 +163,4 @@ cython_debug/
 #.idea/
 custom_data/*
 anotated_data/*
+artifacts/*

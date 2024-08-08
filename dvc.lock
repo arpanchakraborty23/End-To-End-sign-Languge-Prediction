@@ -1,0 +1,23 @@
+schema: '2.0'
+stages:
+  Data_Ingestion:
+    cmd: python signLanguage\pipeline\training_pipeline.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: cb1ad6f3b20f35cd1d5cb4c2b9a174a7
+      size: 243
+    - path: signLanguage\pipeline\training_pipeline.py
+      hash: md5
+      md5: 75995cd8052d6f5717550a07d997dc13
+      size: 919
+    outs:
+    - path: artifacts/data_ingestion/data
+      hash: md5
+      md5: d01818dcd3eea0fd67abc9c9518a4562.dir
+      size: 7596228
+      nfiles: 389
+    - path: artifacts/data_ingestion/data.zip
+      hash: md5
+      md5: 058853d595e08fc1afcffc5b67561575
+      size: 7646448
